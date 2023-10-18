@@ -1,160 +1,215 @@
+<!-- index.html -->
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>canvas</title>
-    <link rel="stylesheet" href="./paint.css" />
-    <link rel="stylesheet" href="./style.css" />
-    <script src="function.js"></script>
-    <script src="event_handler.js"></script>
+    <title>그림판</title>
+    <link href="./style.css" rel="stylesheet" />
+    <link href="./paint.css" rel="stylesheet" />
+    <script src="./function.js"></script>
+    <script src="./event_handler.js"></script>
   </head>
   <body>
     <div id="paint" class="vertical">
       <div id="palette">
-<<<<<<< HEAD
         <form id="palette_form" onsubmit="return false;">
-          <!-- 6가지 항목으로 도형의 상태를 설정: 모양, 사이즈, 글자크기, 배경색상, 글자색상, 투명도 -->
           <dl class="object-setting">
             <dt>모양</dt>
             <dd class="object-shape">
-              <input type="radio" id="shape_circle" name="shape" value="circle" checked>
+              <input
+                type="radio"
+                id="shape_circle"
+                name="shape"
+                value="circle"
+                checked
+              />
               <label for="shape_circle">●</label>
-              <input type="radio" id="shape_rect" name="shape" value="rect">
+              <input type="radio" id="shape_rect" name="shape" value="rect" />
               <label for="shape_rect">■</label>
-              <input type="radio" id="shape_text" name="shape" value="text" onchange="size_height.value=18; font_size.value=15; font_black.checked=true; bg_white.checked=true;">
+              <input
+                type="radio"
+                id="shape_text"
+                name="shape"
+                value="text"
+                onchange="size_height.value=18; font_size.value=15; font_black.checked=true; bg_white.checked=true;"
+              />
               <label for="shape_text">T</label>
             </dd>
             <dt>사이즈</dt>
             <dd class="object-size">
-              <label for="size_width">너비(Width)</label>
-              <input type="text" id="size_width" class="align-right" name="width" value="100"<a>px</a><br>
+              <label for="size_width">W</label>
+              <input
+                type="text"
+                id="size_width"
+                class="align-right"
+                name="width"
+                value="100"
+              /><a>px</a><br />
             </dd>
             <dd class="object-size">
-              <label for="size_height">높이(Height)</label>
-              <input type="text" id="size_height" class="align-right" name="height" value="100"<a>px</a>
+              <label for="size_height">H</label>
+              <input
+                type="text"
+                id="size_height"
+                class="align-right"
+                name="height"
+                value="100"
+              /><a>px</a>
             </dd>
-            <dt>글자크기</dt>
+            <dt>글자 크기</dt>
             <dd class="object-size">
-              <label for="object-size">Font</label>
-              <input type="text" id="size_font" class="align-right" name="font_size" value="32" <a>px</a><br>
+              <label for="size_font">Font</label>
+              <input
+                type="text"
+                id="size_font"
+                class="align-right"
+                name="font_size"
+                value="32"
+              /><a>px</a><br />
             </dd>
-            <dt>배경색상</dt>
+            <dt>배경 색상</dt>
             <dd class="object-color bg-color">
               <table>
                 <tbody>
                   <tr>
                     <td>
-                      <input type="radio" id="bd_black" name="bg_color" value="bg-black" checked>
+                      <input
+                        type="radio"
+                        id="bg_black"
+                        name="bg_color"
+                        value="bg-black"
+                        checked
+                      />
                       <label for="bg_black" class="bg-black black">■</label>
                     </td>
                     <td>
-                      <input type="radio" id="bd_white" name="bg_color" value="bg-white">
+                      <input
+                        type="radio"
+                        id="bg_white"
+                        name="bg_color"
+                        value="bg-white"
+                      />
                       <label for="bg_white" class="bg-white white">■</label>
                     </td>
                     <td>
-                      <input type="radio" id="bd_blue" name="bg_color" value="bg-blue" >
+                      <input
+                        type="radio"
+                        id="bg_blue"
+                        name="bg_color"
+                        value="bg-blue"
+                      />
                       <label for="bg_blue" class="bg-blue blue">■</label>
                     </td>
                     <td>
-                      <input type="radio" id="bd_pink" name="bg_color" value="bg-pink" >
+                      <input
+                        type="radio"
+                        id="bg_pink"
+                        name="bg_color"
+                        value="bg-pink"
+                      />
                       <label for="bg_pink" class="bg-pink pink">■</label>
                     </td>
                     <td>
-                      <input type="radio" id="bd_green" name="bg_color" value="bg-green" >
+                      <input
+                        type="radio"
+                        id="bg_green"
+                        name="bg_color"
+                        value="bg-green"
+                      />
                       <label for="bg_green" class="bg-green green">■</label>
                     </td>
                   </tr>
                 </tbody>
               </table>
             </dd>
-            <dt>글자색상</dt>
+            <dt>글자 색상</dt>
             <dd class="object-color font-color">
               <table>
                 <tbody>
                   <tr>
                     <td>
-                      <input type="radio" id="font_black" name="font_color" value="black" checked>
+                      <input
+                        type="radio"
+                        id="font_black"
+                        name="font_color"
+                        value="black"
+                        checked
+                      />
                       <label for="font_black" class="bg-black black">■</label>
                     </td>
                     <td>
-                      <input type="radio" id="font_white" name="font_color" value="white">
+                      <input
+                        type="radio"
+                        id="font_white"
+                        name="font_color"
+                        value="white"
+                      />
                       <label for="font_white" class="bg-white white">■</label>
                     </td>
                     <td>
-                      <input type="radio" id="font_blue" name="font_color" value="blue">
+                      <input
+                        type="radio"
+                        id="font_blue"
+                        name="font_color"
+                        value="blue"
+                      />
                       <label for="font_blue" class="bg-blue blue">■</label>
                     </td>
                     <td>
-                      <input type="radio" id="font_pink" name="font_color" value="pink">
+                      <input
+                        type="radio"
+                        id="font_pink"
+                        name="font_color"
+                        value="pink"
+                      />
                       <label for="font_pink" class="bg-pink pink">■</label>
                     </td>
                     <td>
-                      <input type="radio" id="font_green" name="font_color" value="green">
+                      <input
+                        type="radio"
+                        id="font_green"
+                        name="font_color"
+                        value="green"
+                      />
                       <label for="font_green" class="bg-green green">■</label>
                     </td>
                   </tr>
                 </tbody>
               </table>
-            </dd>  
+            </dd>
             <dt>투명도</dt>
-            <dd class="object-opacity"><input type="text" id="opacity" name="opacity" value="100" class="align-right" disabled>%</dd>
-            <dd><input type="range" name="opacity_slider" min="1" max="100" value="100" onchange="opacity.value=this.value"></dd> 
-          <!-- type을 range로 하여 투명도를 조절할 수 있게 slider로 만듦 -->
+            <dd class="object-opacity">
+              <input
+                type="text"
+                id="opacity"
+                name="opacity"
+                value="100"
+                class="align-right"
+                disabled
+              />%
+              </dd>
+              <dd><input type="range" name="opacity_slider" min="1" max="100" value="100" onchange="opacity.value=this.value"></dd>
+            </dd>
+            <div class="buttons align-right">
+              <button id="create_object">생성</button>
+            </div>
+            <dd>
+              <dt>색연필</dt>
+              <dd class="object-crayon">
+                
+                <input id="line-width" type="range" min="1" max="20" step="0.5" />
+              </dd>
+              <dd>
+                <input id="color" type="color" />
+              </dd>
+            </dd>
           </dl>
-          <div class="buttons align-right">
-            <button id="create_object">생성</button>
-          </div>
-=======
-        <form id="palette_form" onsubmit="return false">
-            <!-- 6가지 항목으로 설정: 모양, 사이즈, 글자크기, 배경색상, 글자색상, 투명도 -->
-          <dl class="object-setting"></dl>
-          <dt>모양</dt>
-          <dd class="object-shape">
-            <label for=""></label>
-            <input type="text"></dd>
-            <label for=""></label>
-            <input type="text"></dd>
-            <label for=""></label>
-            <input type="text">
-        </dd>
-        <dt>사이즈</dt>
-        <dd class="object-size">
-            <label for="size_width">W</label>
-            <input type="text" id="size_width" class="align-right" name="width" value="100"<a>px</a>
-        </dd>
-        <dd class="object-size">
-            <label for="size_height">H</label>
-            <input type="text" id="size_height" class="align-right" name="height" value="100"<a>px</a>
-        </dd>
-
-        <dt>글자크기</dt>
-        <dd><label for="object-size">Font</label>
-            <input type="text" id="size_font" class="align-right" name="font_size" value="32" <a>px</a><br>
-        </dd>
-        <dt>배경색상</dt>
-        <dd class="object-color bg-color">
-          <table>
-            <tbody>
-              <td>
-                <input type="radio">
-                <label for=""></label>
-              </td>
-            </tbody>
-          </table>
-        </dd>
-        
->>>>>>> temp
         </form>
       </div>
       <div id="canvas">
-        <div class="wrapper">
-        </div>
+        <div class="wrapper"></div>
       </div>
     </div>
-    <script src="canvas.js"></script>
-    <!-- canvas.js파일을 head에서 로드할 경우 element가 생성되기 전에 파일이 먼저 로드되어 element를 참조할 수 없음  -->
+    <script src="./canvas.js"></script>
   </body>
-  </html>
-  
-  
+</html>
