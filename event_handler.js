@@ -4,8 +4,9 @@
 function handleCreateObject(event) {
   event.preventDefault();
 
-  const canvas = document.querySelector('#canvas > .wrapper');
-  const palette = document.getElementById('palette_form');
+  // const canvas = document.querySelector('#canvas > .wrapper');
+  // const palette = document.getElementById('palette_form');
+  const palette = document.getElementById('canvas');
   const object_state = palette.querySelectorAll(
     'input[type="text"], input[type="radio"]:checked'
   );
@@ -47,8 +48,9 @@ function handleObjectHold(event) {
 
   event.target.focus();
 
-  const canvas = document.querySelector('#canvas > .wrapper');
-  const objects = canvas.querySelectorAll('.object');
+  // const canvas = document.querySelector('#canvas > .wrapper');
+  const palette = document.getElementById('canvas');
+  const objects = palette.querySelectorAll('.object');
   let seledted_object = event.target;
   let classList = seledted_object.classList;
 
@@ -84,15 +86,16 @@ function handleObjectHold(event) {
 function handleObjectDrag(event) {
   event.preventDefault();
 
-  const canvas = document.querySelector('#canvas > .wrapper');
-  const object = canvas.querySelector('.object.hold');
+  // const canvas = document.querySelector('#canvas > .wrapper');
+  const palette = document.getElementById('canvas');
+  const object = palette.querySelector('.object.hold');
   if (object) {
     // 마우스 커서의 위치. (왼쪽 상단 모서리 기준)
     const mouseX = event.clientX;
     const mouseY = event.clientY;
 
     // 도화지의 위치. (왼쪽 상단 모서리 기준)
-    const canvasPos = canvas.getBoundingClientRect();
+    const canvasPos = palette.getBoundingClientRect();
     const canvasX = canvasPos.x;
     const canvasY = canvasPos.y;
 
@@ -113,8 +116,9 @@ function handleObjectDrag(event) {
 function handleObjectDrop(event) {
   event.preventDefault();
 
-  const canvas = document.querySelector('#canvas > .wrapper');
-  const object = canvas.querySelector('.object.hold');
+  // const canvas = document.querySelector('#canvas > .wrapper');
+  const palette = document.getElementById('canvas');
+  const object = palette.querySelector('.object.hold');
   if (object) {
     // 속성 및 class를 삭제
     object.removeAttribute('gap-x');
@@ -127,20 +131,25 @@ function handleObjectDrop(event) {
 // 색연필 그리기 이벤트 핸들러
 const color = document.getElementById('color');
 const lineWidth = document.querySelector('#line-width');
-const palette = document.querySelector('#canvas > .wrapper');
-
+//const palette = document.querySelector('#canvas > .wrapper');
+const palette = document.getElementById('canvas');
 const ctx = palette.getContext('2d'); //2d로 그릴 것을 지정. ctx는 palette에 그림 그릴 떄 쓰는 것.
-palette.width = 800;
-palette.height = 800;
+// palette.width = 800;
+// palette.height = 800;
+ctx.strokeStyle = 'black';
 ctx.lineWidth = lineWidth.value; // 기본 선 굵기 값 설정.
 let isPainting = false; // isPainting을 true로 변경될 수 있도록 let으로 설정
 
 function onMove(event) {
   if (isPainting) {
-    ctx.lineTo(event.offsetX, event.offsetY); // 마우스의 현재 위치에 선을 그린다.
+    const x = event.offsetX;
+    const y = event.offsetY;
+    // ctx.lineTo(event.offsetX, event.offsetY); // 마우스의 현재 위치에 선을 그린다.
+    ctx.lineTo(x, y);
     ctx.stroke(); //그린 선을 나타낸다.
+    console.log(x, y);
   }
-  ctx.moveTo(event.offsetX, event.offsetY); // isPainting이 false면 마우스를 따라 이동만 한다.
+  // ctx.moveTo(event.offsetX, event.offsetY); // isPainting이 false면 마우스를 따라 이동만 한다.
 }
 
 function startPainting() {
@@ -156,12 +165,13 @@ function quitPainting() {
 
 function onlineChangeWidth() {
   // 변경된 선 굵기 값을 적용받게 하는 함수.
-  ctx.lineWidth = event.target.value;
+  // ctx.lineWidth = event.target.value;
+  ctx.lineWidth = lineWidth.value;
 }
 
 function oncolorChange(event) {
-  ctx.strokeStyle = event.target.value; // 선 색상 변경
-  ctx.fillStyle = event.target.value;
+  ctx.strokeStyle = color.value; // 선 색상 변경
+  // ctx.fillStyle = event.target.value;
 }
 
 palette.addEventListener('mousemove', onMove);
@@ -170,3 +180,8 @@ palette.addEventListener('mouseup', quitPainting);
 palette.addEventListener('mouseleave', quitPainting);
 lineWidth.addEventListener('input', onlineChangeWidth);
 color.addEventListener('input', oncolorChange);
+
+function clearAll() {
+  // 지우개
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+}

@@ -127,12 +127,12 @@
 }
 
 /* 도화지 설정 */
-#canvas {
+/* /* #canvas {
   width: 80%;
   height: 100%;
   box-sizing: border-box;
-  border: 1px solid darkgray;
-}
+  border: 1px solid darkgray; */
+} */
 #canvas > .wrapper {
   width: 100%;
   height: 100%;

@@ -7,7 +7,7 @@
     <link href="./style.css" rel="stylesheet" />
     <link href="./paint.css" rel="stylesheet" />
     <script src="./function.js"></script>
-    <script src="./event_handler.js"></script>
+    <!-- <script src="./event_handler.js"></script> -->
   </head>
   <body>
     <div id="paint" class="vertical">
@@ -205,11 +205,14 @@
             </dd>
           </dl>
         </form>
+        <button onclick="colorChange('white')">지우개</button>
+        <button onclick="clearAll()">전체지우기</button>
       </div>
-      <div id="canvas">
-        <div class="wrapper"></div>
-      </div>
-    </div>
+      <canvas id='canvas' width='500' height='500' style="border:1px solid black"></canvas>
+        <!-- <div class="wrapper"></div> -->
+    <!-- </canvas> -->
+    
     <script src="./canvas.js"></script>
+    <script src="./event_handler.js"></script>
   </body>
 </html>

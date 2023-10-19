@@ -14,8 +14,9 @@ function getMaxAttr(objects, key, _default) {
 
 // 도형 element 생성
 function createObject(setting) {
-  const canvas = document.querySelector('#canvas > .wrapper');
-  const objects = canvas.querySelectorAll('.object');
+  //   const canvas = document.querySelector('#canvas > .wrapper');
+  const palette = document.getElementById('canvas');
+  const objects = palette.querySelectorAll('.object');
 
   let classList = ['object'];
   let object = document.createElement('div');
